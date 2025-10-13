@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Placement Assistant</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="styles.css" rel="stylesheet">
+</head>
+<body>
+  <!-- Responsive Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary bg-gradient shadow-sm">
+    <div class="container"> 
+      <a class="navbar-brand d-flex align-items-center" href="#">
+        <span class="fw-bold text-light fs-5">PVKKIT Placement Assistant</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarButtons" aria-controls="navbarButtons" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end mt-3" id="navbarButtons">
+        <ul class="navbar-nav mb-2 mb-lg-0">
+          <li class="nav-item mb-2 mb-lg-0 me-lg-2">
+            <button id="nav-login" class="btn btn-outline-light w-100 w-lg-auto">Student</button>
+          </li>
+          <li class="nav-item">
+            <button id="nav-admin" class="btn btn-light w-100 w-lg-auto">Admin</button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Scrolling Updates -->
+  <div class="bg-light text-primary py-1 px-3 overflow-hidden">
+    <marquee behavior="scroll" direction="left">
+      Latest Placement Updates: Google, TCS, Infosys recruited students! | Check your resume status now.
+    </marquee>
+  </div>
+
+  <main class="container my-3">
+
+    <!-- Hero Section -->
+    <div class="hero text-center mb-4">
+      <h1>Welcome to PVKK Institute of Technology Placement Assistant</h1>
+      <p>Helping students track their placement journey</p>
+    </div>
+
+    
+    <!-- ======= Placement Stats Section ======= -->
+<section class="container my-4">
+  <div class="row justify-content-center g-3">
+
+    <!-- Card 1: Companies Hired -->
+    <div class="col-12 col-md-6">
+      <div class="card text-center shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title">Companies Hired</h5>
+          <h2 id="companiesHired" class="display-5">0</h2>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 2: Students Placed -->
+    <div class="col-12 col-md-6">
+      <div class="card text-center shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title">Students Placed</h5>
+          <h2 id="studentsPlaced" class="display-5">0</h2>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+    <!-- Company Carousel -->
+    <div id="companyCarousel" class="carousel slide py-3 bg-white shadow-sm" data-bs-ride="carousel">
+      <div class="carousel-inner text-center">
+        <div class="carousel-item active">
+          <img src="https://www.drupal.org/files/infosys-logo-PNG.png" class="d-inline-block" height="50" alt="Infosys">
+          <img src="https://tse2.mm.bing.net/th/id/OIP.jgfBht292HUGzVnhCas29gHaE8?pid=Api&P=0&h=180" class="d-inline-block mx-3" height="50" alt="Company 2">
+          <img src="https://logos-world.net/wp-content/uploads/2023/03/Cognizant-Logo-2018.png" class="d-inline-block" height="50" alt="Cognizant">
+        </div>
+        <div class="carousel-item">
+          <img src="https://cdn.freelogovectors.net/wp-content/uploads/2020/08/tata-consultancy-services-logo-tcs.png" class="d-inline-block" height="50" alt="TCS">
+          <img src="http://pngimg.com/uploads/ibm/ibm_PNG19658.png" class="d-inline-block mx-3" height="50" alt="IBM">
+        </div>
+        <div class="carousel-item">
+          <img src="http://www.pngmart.com/files/4/Microsoft-Logo-Transparent-Background.png" class="d-inline-block" height="50" alt="TCS">
+          <!-- <img src="https://listcarbrands.com/wp-content/uploads/2017/11/logo-Mahindra.jpg" class="d-inline-block mx-3" height="50" alt="IBM"> -->
+          <img src="https://www.actuia.com/wp-content/uploads/2019/06/capgemini.png" class="d-inline-block" height="50" alt="Capgemini">
+        </div>
+      </div>
+    </div>
+
+    <!-- Top-left Updates Banner -->
+    <!-- <div class="position-fixed top-0 start-0 mt-5 p-2 bg-warning rounded shadow-sm d-flex align-items-center gap-2">
+      <span class="fw-bold">📢 Latest Update:</span>
+      <a href="https://mockexam.example.com" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-dark">
+        Mock Exam Link
+      </a>
+    </div> -->
+
+    <!-- LOGIN VIEW -->
+    <section id="view-login" class="mx-auto my-4" style="max-width:500px;">
+      <div class="card shadow-sm border-0">
+        <div class="card-body">
+          <h4 class="card-title mb-3 text-center">Student Login</h4>
+          <form id="loginForm">
+            <div class="mb-3">
+              <label for="rollInput" class="form-label">Roll Number (UpperCase)</label>
+              <input id="rollInput" class="form-control" placeholder="Enter your roll number 2XA223XXBCD" required>
+            </div>
+            <div class="mb-3">
+              <label for="branchInput" class="form-label">Branch</label>
+              <select id="branchInput" class="form-control" required>
+                <option value="" disabled selected>Select your branch</option>
+                <option value="CSE-A">CSE-A</option>
+                <option value="CSE-B">CSE-B</option>
+                <option value="CSG">CSG</option>
+              </select>
+            </div>
+            <div class="d-flex gap-2 justify-content-between">
+              <button type="submit" class="btn btn-primary w-50">Login</button>
+              <button id="login-clear" type="button" class="btn btn-secondary w-50">Clear</button>
+            </div>
+            <div id="loginMessage" class="mt-3 text-center"></div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- UPLOAD VIEW -->
+    <section id="view-upload" class="d-none mx-auto mt-5" style="max-width:700px;">
+      <div class="card shadow-sm border-0">
+        <div class="card-body">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h4 class="card-title">Upload Resume</h4>
+            <button id="btn-logout" class="btn btn-outline-secondary btn-sm">Logout</button>
+          </div>
+          <div id="studentInfo" class="mb-3"></div>
+          <form id="uploadForm">
+            <div class="row g-3">
+              <div class="col-md-6">
+  <label class="form-label">Date of Birth</label>
+  <input id="dobInput" class="form-control" type="date" placeholder="YYYY-MM-DD">
+</div>
+<div class="col-md-6">
+  <label class="form-label">CGPA</label>
+  <input id="cgpaInput" class="form-control" type="number" step="0.01" placeholder="e.g. 8.5">
+</div>
+              <div class="col-md-6">
+                <label class="form-label">Email</label>
+                <input id="emailInput" class="form-control" type="email" placeholder="you@example.com">
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Phone</label>
+                <input id="phoneInput" class="form-control" type="tel" placeholder="99XXXXXXXX">
+              </div>
+              <div class="col-12">
+                <label class="form-label">Resume (PDF, max 6MB)</label>
+                <input id="fileInput" class="form-control" type="file" accept="application/pdf">
+              </div>
+              <div class="col-12 d-flex gap-2">
+                <button type="submit" class="btn btn-success flex-grow-1">Upload Resume</button>
+                <button id="btn-save-details" type="button" class="btn btn-outline-primary flex-grow-1">Save Details</button>
+              </div>
+            </div>
+          </form>
+          <div id="uploadMessage" class="mt-3 text-center"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ADMIN VIEW -->
+    <section id="view-admin" class="d-none mx-auto mt-4" style="max-width:900px;">
+      <div class="card shadow-sm border-0">
+        <div class="card-body">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h4 class="card-title">Admin Dashboard</h4>
+            <div class="d-flex gap-2">
+              <button id="btn-refresh-admin" class="btn btn-outline-secondary btn-sm">Refresh</button>
+              <button id="btn-back-to-login" class="btn btn-secondary btn-sm">Back</button>
+            </div>
+          </div>
+          <div id="adminSummary" class="mb-3"></div>
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <h6>Uploaded</h6>
+              <button id="downloadUploaded" class="btn btn-sm btn-outline-success mb-2">Download CSV</button>
+              <ul id="uploadedList" class="list-group"></ul>
+            </div>
+            <div class="col-md-6 mb-3">
+              <h6>Not Uploaded</h6>
+              <button id="downloadNotUploaded" class="btn btn-sm btn-outline-danger mb-2">Download CSV</button>
+              <ul id="notUploadedList" class="list-group"></ul>
+            </div>
+          </div>
+          <div id="adminMessage" class="mt-3 text-center"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== ADMIN PASSWORD MODAL ==================== -->
+  <div class="modal fade" id="adminLoginModal" tabindex="-1" aria-labelledby="adminLoginLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content border-0 shadow">
+        <div class="modal-header">
+          <h5 class="modal-title" id="adminLoginLabel">Admin Access</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p class="mb-2">Enter admin password to continue:</p>
+          <input type="password" id="adminPasswordInput" class="form-control" placeholder="Enter password">
+          <div id="adminPasswordError" class="text-danger mt-2 small d-none">Incorrect password!</div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button type="button" id="confirmAdminLogin" class="btn btn-primary">Login</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- ======= Footer ======= -->
+<footer class="bg-dark text-light py-3 mt-4">
+  <div class="container text-center">
+    <small>
+      &copy; 2025 PVKKIT Placement Assistant.
+    </small>
+  </div>
+</footer>
+
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script type="module" src="script.js"></script>
+</body>
+</html>
