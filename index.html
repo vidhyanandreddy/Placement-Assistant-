@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Placement Assistant</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="styles.css" rel="stylesheet">
+</head>
+<body>
+  <!-- Responsive Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary bg-gradient shadow-sm">
+    <div class="container"> 
+      <a class="navbar-brand d-flex align-items-center" href="#">
+        <span class="fw-bold text-light fs-5">PVKKIT Placement Assistant</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarButtons" aria-controls="navbarButtons" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end mt-3" id="navbarButtons">
+        <ul class="navbar-nav mb-2 mb-lg-0">
+          <li class="nav-item mb-2 mb-lg-0 me-lg-2">
+            <button id="nav-login" class="btn btn-outline-light w-100 w-lg-auto">Student</button>
+          </li>
+          <li class="nav-item">
+            <button id="nav-admin" class="btn btn-light w-100 w-lg-auto">Admin</button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  
+  <div class="bg-light text-primary py-2 px-3 overflow-hidden position-relative" id="updatesContainer">
+  <div id="updatesContent" class="d-inline-block"></div>
+</div>
+
+
+  <main class="container my-3">
+
+    <!-- Hero Section -->
+    <div class="hero text-center mb-4">
+      <h1>Welcome to PVKK Institute of Technology Placement Assistant</h1>
+      <p>Helping students track their placement journey</p>
+    </div>
+
+  
+    <!-- LOGIN VIEW -->
+    <section id="view-login" class="mx-auto my-4" style="max-width:500px;">
+      <div class="card shadow-sm border-0">
+        <div class="card-body">
+          <h4 class="card-title mb-3 text-center">Student Login</h4>
+          <form id="loginForm">
+            <div class="mb-3">
+              <label for="rollInput" class="form-label">Roll Number (UpperCase)</label>
+              <input id="rollInput" class="form-control" placeholder="Enter your roll number 2XA223XXBCD" required>
+            </div>
+            <div class="mb-3">
+  <label for="admittedYearInputLogin" class="form-label">Admitted Year</label>
+  <select id="admittedYearInputLogin" class="form-control" required>
+    <option value="" disabled selected>Select admitted year</option>
+    <option value="2022">2022</option>
+    <option value="2023">2023</option>
+    <option value="2024">2024</option>
+    <option value="2025">2025</option>
+    <option value="2026">2026</option>
+  </select>
+</div>
+
+            <div class="d-flex gap-2 justify-content-between">
+              <button type="submit" class="btn btn-primary w-50">Login</button>
+              <button id="login-clear" type="button" class="btn btn-secondary w-50">Clear</button>
+            </div>
+            <div id="loginMessage" class="mt-3 text-center"></div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- UPLOAD VIEW -->
+    <section id="view-upload" class="d-none mx-auto mt-5" style="max-width:700px;">
+      <div class="card shadow-sm border-0">
+        <div class="card-body">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h4 class="card-title">Upload Resume</h4>
+            <button id="btn-logout" class="btn btn-outline-secondary btn-sm">Logout</button>
+          </div>
+          <div id="studentInfo" class="mb-3"></div>
+          <form id="uploadForm">
+            <div class="row g-3">
+              <div class="col-md-6">
+  <label class="form-label">Date of Birth</label>
+  <input id="dobInput" class="form-control" type="date" placeholder="YYYY-MM-DD">
+</div>
+<div class="col-md-6">
+  <label class="form-label">CGPA</label>
+  <input id="cgpaInput" class="form-control" type="number" step="0.01" placeholder="e.g. 8.5">
+</div>
+              <div class="col-md-6">
+                <label class="form-label">Email</label>
+                <input id="emailInput" class="form-control" type="email" placeholder="you@example.com">
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Phone</label>
+                <input id="phoneInput" class="form-control" type="tel" placeholder="99XXXXXXXX">
+              </div>
+              <div class="mb-3">
+  <label for="admittedYearInput" class="form-label">Admitted Year</label>
+  <input id="admittedYearInput" class="form-control" placeholder="Enter admitted year">
+</div>
+
+<div class="mb-3">
+  <label for="graduationYearInput" class="form-label">Graduation Year</label>
+  <input id="graduationYearInput" class="form-control" placeholder="Enter graduation year">
+</div>
+
+<div class="mb-3">
+  <label for="instituteInput" class="form-label">Institute Name</label>
+  <input id="instituteInput" class="form-control" placeholder="Enter institute name">
+</div>
+
+<div class="mb-3">
+  <label for="backlogsInput" class="form-label">Active Backlogs</label>
+  <input
+    id="backlogsInput"
+    type="number"
+    class="form-control"
+    placeholder="Enter number of active backlogs"
+    min="0"
+    step="1"
+  >
+</div>
+
+
+<div class="mb-3">
+  <label for="linkedinInput" class="form-label">LinkedIn Profile</label>
+  <input id="linkedinInput" class="form-control" placeholder="Enter LinkedIn URL">
+</div>
+
+              <div class="col-12">
+                <label class="form-label">Resume (PDF, max 6MB)</label>
+                <input id="fileInput" class="form-control" type="file" accept="application/pdf">
+              </div>
+              <div class="col-12 d-flex gap-2">
+                <button type="submit" class="btn btn-success flex-grow-1">Upload Resume</button>
+                <button id="btn-save-details" type="button" class="btn btn-outline-primary flex-grow-1">Save Details</button>
+              </div>
+            </div>
+          </form>
+          <div id="uploadMessage" class="mt-3 text-center"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ADMIN VIEW -->
+<section id="view-admin" class="d-none mx-auto mt-4" style="max-width:900px;">
+<!-- Year filter navbar -->
+<div id="yearNavbar" class="btn-group mb-3" role="group">
+  <button class="btn btn-outline-primary" data-year="2022">2022</button>
+  <button class="btn btn-outline-primary" data-year="2023">2023</button>
+  <button class="btn btn-outline-primary" data-year="2024">2024</button>
+  <button class="btn btn-outline-primary" data-year="2025">2025</button>
+  <button class="btn btn-outline-primary" data-year="2026">2026</button>
+  <!-- <button class="btn btn-outline-primary" data-year="2027">2027</button>
+  <button class="btn btn-outline-primary" data-year="2028">2028</button> -->
+</div>
+
+  <!-- Branch-wise summary -->
+  <div id="adminSummary" class="mb-3"> </div>
+
+  <div class="card shadow-sm border-0">
+    <div class="card-body">
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <h4 class="card-title">Admin Dashboard</h4>
+        <div class="d-flex gap-2">
+          <button id="btn-refresh-admin" class="btn btn-outline-secondary btn-sm">Refresh</button>
+          <button id="btn-back-to-login" class="btn btn-secondary btn-sm">Back</button>
+        </div>
+      </div>
+
+      <div class="row">
+  <div class="col-md-6 mb-3">
+    <h6>Uploaded</h6>
+    <button id="downloadUploaded" class="btn btn-sm btn-outline-success mb-2">Download CSV</button>
+    <div style="max-height: 300px; overflow-y: auto;">
+      <ul id="uploadedList" class="list-group list-group-flush"></ul>
+    </div>
+  </div>
+
+  <div class="col-md-6 mb-3">
+    <h6>Not Uploaded</h6>
+    <button id="downloadNotUploaded" class="btn btn-sm btn-outline-danger mb-2">Download CSV</button>
+    <div style="max-height: 300px; overflow-y: auto;">
+      <ul id="notUploadedList" class="list-group list-group-flush"></ul>
+    </div>
+  </div>
+</div>
+      <div id="adminMessage" class="mt-3 text-center"></div>
+    </div>
+  </div>
+</section>
+
+    <!-- ==================== ADMIN PASSWORD MODAL ==================== -->
+  <div class="modal fade" id="adminLoginModal" tabindex="-1" aria-labelledby="adminLoginLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content border-0 shadow">
+        <div class="modal-header">
+          <h5 class="modal-title" id="adminLoginLabel">Admin Access</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p class="mb-2">Enter admin password to continue:</p>
+          <input type="password" id="adminPasswordInput" class="form-control" placeholder="Enter password">
+          <div id="adminPasswordError" class="text-danger mt-2 small d-none">Incorrect password!</div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button type="button" id="confirmAdminLogin" class="btn btn-primary">Login</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <section class="company-showcase my-4">
+  <h4 class="text-center mb-3">Our Recruiting Companies</h4>
+  <div class="row row-cols-2 row-cols-md-4 g-3 justify-content-center">
+
+    <!-- Company Card Example -->
+     <div class="col">
+      <div class="card shadow-sm text-center p-2 h-100 company-card">
+        <img src="https://images.ctfassets.net/7xz1x21beds9/4cTq1jt8uh8jnBgvWbpKOV/663b48744791bd4e5ca178ae503d4916/Tata_Consultancy_Services_Logo.svg.png?w=1029&h=1029&q=90&fm=png" class="card-img-top mx-auto" style="height:50px; width:auto;" alt="TCS">
+        <div class="card-body p-1">
+          <h6 class="card-title mt-2">TCS</h6>
+          <span class="badge bg-warning text-dark">Recently Hired</span>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card shadow-sm text-center p-2 h-100 company-card">
+        <img src="https://www.drupal.org/files/infosys-logo-PNG.png" class="card-img-top mx-auto" style="height:50px; width:auto;" alt="Infosys">
+        <div class="card-body p-1">
+          <h6 class="card-title mt-2">Infosys</h6>
+          <span class="badge bg-success">Upcoming Drive</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="card shadow-sm text-center p-2 h-100 company-card">
+        <img src="https://www.qualtrics.com/m/assets/partnerships/wp-content/uploads/2020/08/Cognizant_Logo_Brand_Blue.png" class="card-img-top mx-auto" style="height:50px; width:auto;" alt="Cognizant">
+        <div class="card-body p-1">
+          <h6 class="card-title mt-2">Cognizant</h6>
+          <span class="badge bg-info text-dark">Top Recruiter</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="card shadow-sm text-center p-2 h-100 company-card">
+        <img src="https://i0.wp.com/shop.notreplaisir.fr/wp-content/uploads/2022/10/Logo-Accenture.png?ssl=1" class="card-img-top mx-auto" style="height:50px; width:auto;" alt="Microsoft">
+        <div class="card-body p-1">
+          <h6 class="card-title mt-2">Microsoft</h6>
+          <span class="badge bg-danger">Hot Opportunity</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+  <!-- ======= Footer ======= -->
+<footer class="bg-dark text-light py-3 mt-4">
+  <div class="container text-center">
+    <small>
+      &copy; 2025 PVKKIT Placement Assistant.
+    </small>
+  </div>
+</footer>
+
+  </main>
+  
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script type="module" src="script.js"></script>
+</body>
+</html>
