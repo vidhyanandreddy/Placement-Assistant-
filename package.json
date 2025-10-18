@@ -1,0 +1,20 @@
+{
+  "name": "placement-backend",
+  "version": "1.0.0",
+  "description": "Backend for PVKKIT Placement Assistant",
+  "main": "proxy.js",
+  "scripts": {
+    "start": "node proxy.js"
+  },
+  "dependencies": {
+    "archiver": "^7.0.1",
+    "axios": "^1.12.2",
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "node-fetch": "^2.7.0",
+    "punycode": "^2.3.1"
+  },
+  "engines": {
+    "node": "18.x"
+  } 
+}
